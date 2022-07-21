@@ -1,0 +1,13 @@
+<div class="wizard-step">
+    <h2>Skills</h2>
+    <button type="button" (click)="add()">Add</button>
+    <div *ngFor="let skill of model.skills; index as i">
+        <input type="text" [(ngModel)]="skill.name" #skillName="ngModel" placeholder="Skill">
+        <select [(ngModel)]="skill.level">
+            <option [ngValue]="KnowledgeLevel.Basic">Basic</option>
+            <option [ngValue]="KnowledgeLevel.Medium">Medium</option>
+            <option [ngValue]="KnowledgeLevel.Advanced">Advanced</option>
+        </select>
+        <button type="button" (click)="remove(i)">Remove</button>
+    </div>
+</div>

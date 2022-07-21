@@ -1,0 +1,64 @@
+<div>
+    <div class="wizard-container" [style.backgroundColor]="registrationModel?.personalInfo?.sex == 1 ? 'lightskyblue' : 'pink'">
+        <h1>{{title}}</h1>
+        <div class="step-container">
+            <personal-details #wizardStep
+                [model]="registrationModel"
+                [hidden]="currentStep != WizardStep.PersonalDetails"
+                (ready)="onStepReady($event)">
+            </personal-details>
+            <work-details #wizardStep
+                [model]="registrationModel" 
+                [hidden]="currentStep != WizardStep.WorkDetails"
+                (ready)="onStepReady($event)">
+            </work-details>
+            <skills-list #wizardStep
+                [model]="registrationModel" 
+                [hidden]="currentStep != WizardStep.Skills"
+                (ready)="onStepReady($event)">
+            </skills-list>
+            <comments #wizardStep
+                [model]="registrationModel" 
+                [hidden]="currentStep != WizardStep.Comments"
+                (ready)="onStepReady($event)">
+            </comments>
+        </div>
+        <div class="wizard-actions-container">
+            <button [disabled]="currentStep == 1" type="button" (click)="goBack()">Previous</button>
+            <button [hidden]="currentStep == lastStep" type="button" (click)="goNext()">Next</button>
+            <button [hidden]="currentStep != lastStep" type="button" (click)="submitData()">Submit</button>
+        </div>
+        <div class="wizard-navigator">
+            <div class="wizard-navigator-item" [class.active]="currentStep == WizardStep.PersonalDetails" (click)="goToStep(WizardStep.PersonalDetails)">
+                <label>Personal Details</label>
+                <code>
+                    <pre>{{registrationModel.personalInfo | json}}</pre>
+                </code>
+            </div>
+            <div class="wizard-navigator-item" [class.active]="currentStep == WizardStep.WorkDetails" (click)="goToStep(WizardStep.WorkDetails)">
+                <label>Work Details</label>
+                <code>
+                    <pre>{{registrationModel.workInfo | json}}</pre>
+                </code>
+            </div>
+            <div class="wizard-navigator-item" [class.active]="currentStep == WizardStep.Skills" (click)="goToStep(WizardStep.Skills)">
+                <label>Skills</label>
+                <code>
+                    <pre>{{registrationModel.skills | json}}</pre>
+                </code>
+            </div>
+            <div class="wizard-navigator-item" [class.active]="currentStep == WizardStep.Comments" (click)="goToStep(WizardStep.Comments)">
+                <label>Comments</label>
+                <code>
+                    <pre>{{registrationModel.comments | json}}</pre>
+                </code>
+            </div>
+        </div>
+    </div>
+    <div style="float: right;">
+        <code>
+            <pre>{{registrationModel | json}}</pre>
+        </code>
+    </div>
+    <button type="button" (click)="clear()">Clear</button>
+</div>

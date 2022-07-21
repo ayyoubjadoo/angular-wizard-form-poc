@@ -1,0 +1,18 @@
+<div class="wizard-step">
+    <h2>Personal Details</h2>
+    <input type="text" [(ngModel)]="model.personalInfo.firstName" #firstName="ngModel" placeholder="First Name">
+    <br>
+    <input type="text" [(ngModel)]="model.personalInfo.lastName" #lastName="ngModel" placeholder="Last Name">
+    <br>
+    <select [(ngModel)]="model.personalInfo.sex">
+        <option [ngValue]="Sex.Male">Male</option>
+        <option [ngValue]="Sex.Female">Female</option>
+    </select>
+    <br>
+    <input type="text" [(ngModel)]="model.personalInfo.mobileNumber" #mobileNumber="ngModel" placeholder="Mobile Number">
+    <br>
+    <input type="text" [(ngModel)]="model.personalInfo.address" #address="ngModel" placeholder="Address">
+    <br>
+    <br>
+    <button type="button" (click)="doExternalWork()">Do External Work</button>
+</div>

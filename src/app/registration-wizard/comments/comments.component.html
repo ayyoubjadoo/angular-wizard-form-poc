@@ -1,0 +1,6 @@
+<div class="wizard-step">
+    <h2>Comments</h2>
+    <textarea [(ngModel)]="model.comments"></textarea>
+    <label>Skills Count: {{model.skills.length}}</label>
+    <h3>Thanks {{model.personalInfo.sex == 1 ? 'Mr.' : 'Mrs.'}} {{model.personalInfo.firstName}} !</h3>
+</div>
